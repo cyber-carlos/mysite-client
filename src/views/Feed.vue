@@ -1,41 +1,41 @@
 <template>
   <section class="container flex flex-wrap p-2 pt-0 sm:p-6 sm:pt-4">
     <div class="flex-1">
-      <div class="px-4 rounded dark:bg-saoqi-bg2">
-        <div class="py-4 text-3xl dark:text-saoqi-lighter2">{{ item.title }}</div>
-        <div class="flex flex-row flex-wrap flex-auto pb-4 text-xs dark:text-saoqi-text2">
-          <div class="dark:text-saoqi-text2">
-            <IconGlobe class="inline w-4 h-4 mr-1" />
-            <a class="dark:text-saoqi-link" :href="item.source?.web || '#'" target="_blank">
+      <div class="px-4 rounded bg-carlos-bg-secondary">
+        <div class="py-4 text-3xl text-carlos-text-accent">{{ item.title }}</div>
+        <div class="flex flex-row flex-wrap flex-auto pb-4 text-xs text-carlos-text-secondary">
+          <div class="text-carlos-text-secondary">
+            <IconGlobe class="inline w-4 h-4 mr-1 align-bottom" />
+            <a class=" text-carlos-link-secondary" :href="item.source?.web || '#'" target="_blank">
               {{ `${item.source?.name || ''} ${item.author || ''}` }}
             </a>
           </div>
-          <div class="ml-8 dark:text-saoqi-text2">
-            <IconClock class="inline w-4 h-4 mr-1" />{{ $dayjs(item.pubDate).fromNow() }}
+          <div class="ml-8 text-carlos-text-secondary ">
+            <IconClock class="inline w-4 h-4 mr-1 align-bottom" />{{ $dayjs(item.pubDate).fromNow() }}
           </div>
-          <div class="ml-auto dark:text-saoqi-text2">
-            <IconLink class="inline w-4 h-4 mr-1" />
-            <a class="dark:text-saoqi-link" :href="item.link" target="_blank">原文链接</a>
+          <div class="ml-auto text-carlos-text-secondary">
+            <IconLink class="inline w-4 h-4 mr-1 align-bottom" />
+            <a class="text-carlos-link-secondary" :href="item.link" target="_blank">原文链接</a>
           </div>
         </div>
       </div>
       <article
-        class="mt-8 prose max-w-none dark:text-saoqi-text1 dark:prose-dark"
+        class="mt-8 prose max-w-none text-carlos-text-primary dark:prose-dark"
         v-html="item.description"
       ></article>
-      <hr class="mt-8 dark:text-saoqi-border" />
+      <hr class="mt-8 border-carlos-border" />
       <div class="px-4 py-8 text-xs">
         <span>
           版权声明：本文版权归
-          <a class="dark:text-saoqi-link" target="_blank" :href="item.source?.web || '#'">
+          <a class="text-carlos-link-secondary" target="_blank" :href="item.source?.web || '#'">
             {{ `${item.source?.name || ''} ${item.author || ''}` }}
           </a>
           所有。<br />
           原文链接：<IconLink class="inline w-4 h-4 mr-1 align-middle" />
-          <a class="dark:text-saoqi-link" :href="item.link" target="_blank">{{ item.link }}</a>
+          <a class="text-carlos-link-secondary" :href="item.link" target="_blank">{{ item.link }}</a>
         </span>
       </div>
-      <hr class="dark:text-saoqi-border" />
+      <hr class="border-carlos-border" />
       <div
         class="grid grid-cols-1 gap-4 mt-8 auto-rows-auto sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4"
       >
@@ -47,7 +47,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, inject, onMounted, reactive, Ref, ref, watchEffect } from 'vue'
+import { computed, defineComponent, reactive, Ref, ref, watchEffect } from 'vue'
 import { useAxios } from '/@/hooks/useAxios'
 import { useRouter } from 'vue-router'
 import { IFeed } from '/@/types/interface'
@@ -78,7 +78,7 @@ export default defineComponent({
         item.value = data.value.data
         item.value.description = item.value.description.replace(
           /<img /g,
-          '<img class="m-auto border rounded max-w-img dark:border-saoqi-border" '
+          '<img class="m-auto border rounded max-w-img border-carlos-border" '
         )
         // item.value.author = item.value.author || ''
         const meta = data.value.meta

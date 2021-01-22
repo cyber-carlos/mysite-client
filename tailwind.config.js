@@ -1,26 +1,30 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     colors: {
-      saoqi: {
-        white: '#ffffff',
-        black: '#000000',
-        50: '#d2cbe4',
-        text1: '#f4e0f1',
-        text2: '#9479b9',
-        text3: '#ffb6b3',
-        text4: '#ffd3f8',
-        text5: '#b886fd',
-        border: '#44395d',
-        link: '#4edee5',
-        lighter1: '#c83b50',
-        lighter2: '#ffe69d',
-        lighter3: '#ff566f',
-        bg1: '#2f263c',
-        bg2: '#281e36',
-        bg3: '#1c1428',
-        bg4: '#642f45',
+      white: colors.white,
+      black: colors.black,
+      carlos: {
+        'text-primary': 'var(--text-primary)',
+        'text-secondary': 'var(--text-secondary)',
+        'text-tertiary': 'var(--text-tertiary)',
+        'text-accent': 'var(--text-accent)',
+
+        'link-primary': 'var(--link-primary)',
+        'link-primary-hover': 'var(--link-primary-hover)',
+        'link-secondary': 'var(--link-secondary)',
+        'link-secondary-hover': 'var(--link-secondary-hover)',
+
+        'bg-primary': 'var(--bg-primary)',
+        'bg-secondary': 'var(--bg-secondary)',
+        'bg-tertiary': 'var(--bg-tertiary)',
+        'bg-accent': 'var(--bg-accent)',
+
+        border: 'var(--border)',
+        header: 'var(--header)',
       },
     },
     extend: {
@@ -31,25 +35,25 @@ module.exports = {
         img: '80%',
       },
       typography: (theme) => ({
-        dark: {
+        DEFAULT: {
           css: {
-            color: theme('colors.saoqi.text1'),
+            color: theme('colors.carlos.text-primary'),
             strong: {
-              color: theme('colors.saoqi.text1'),
+              color: theme('colors.carlos.text-primary'),
             },
             h1: {
-              color: theme('colors.saoqi.lighter3'),
+              color: theme('colors.carlos.text-accent'),
             },
             h2: {
-              color: theme('colors.saoqi.lighter3'),
+              color: theme('colors.carlos.text-accent'),
             },
             h3: {
-              color: theme('colors.saoqi.lighter3'),
+              color: theme('colors.carlos.text-accent'),
             },
             a: {
-              color: theme('colors.saoqi.link'),
+              color: theme('colors.carlos.link-secondary'),
               '&:hover': {
-                color: theme('colors.saoqi.link'),
+                color: theme('colors.carlos.link-secondary-hover'),
               },
               textDecoration: 'none',
             },
@@ -60,7 +64,7 @@ module.exports = {
   },
   variants: {
     extend: {},
-    typography: ['responsive', 'dark'],
+    typography: ['responsive'],
   },
   plugins: [
     require('@tailwindcss/typography')({
