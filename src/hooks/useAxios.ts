@@ -1,13 +1,13 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse, CancelTokenSource } from 'axios'
 import { Ref, ref } from 'vue'
-// import Config from '/@/config'
+import Config from '/@/config'
 import * as nprogress from 'nprogress'
 import 'nprogress/nprogress.css'
 
 nprogress.configure({ parent: '#app' })
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:3005/', // Config.API_BASE_URL,
-  timeout: 6 * 1000, // Config.API_TIMEOUT,
+  baseURL: Config.API_BASE_URL,
+  timeout: Config.API_TIMEOUT,
 })
 
 const handleError = (error: AxiosError) => {

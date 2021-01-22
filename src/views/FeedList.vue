@@ -1,6 +1,6 @@
 <template>
   <section class="container flex flex-row flex-wrap p-6 pt-4">
-    <div class="flex-1">
+    <div class="relative flex-1" v-loading="isLoading">
       <transition-group
         appear
         name="card"
@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, reactive } from 'vue'
+import { defineComponent, onMounted, reactive, ref } from 'vue'
 
 import { IFeed } from '/@/types/interface'
 import { useAxios } from '/@/hooks/useAxios'
@@ -33,11 +33,13 @@ export default defineComponent({
   props: {},
   setup() {
     const feedItems: IFeed[] = reactive([])
+    const isLoading = ref(true)
     const fetchFeeds = async () => {
-      const { error, data } = await useAxios('feeders')
+      const { error, data, finished } = await useAxios('feeders')
       // const dataItems = data.value.data
       // const dataMeta = data.value.meta
       if (!error.value) {
+        isLoading.value = !finished.value
         feedItems.splice(0, feedItems.length, ...data.value.data)
       }
     }
@@ -45,6 +47,7 @@ export default defineComponent({
       fetchFeeds()
     })
     return {
+      isLoading,
       fetchFeeds,
       feedItems,
     }

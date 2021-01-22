@@ -12,6 +12,7 @@
     "build": "vuedx-typecheck . && vite build"
   },
   "dependencies": {
+    "@vueuse/core": "^4.0.8",
     "axios": "^0.21.1",
     "dayjs": "^1.10.3",
     "nprogress": "^0.2.0",

@@ -4,17 +4,20 @@ import store from './store'
 
 import App from './App.vue'
 
+import vLoading from './directives/vLoading'
+
 import '/@/assets/css/index.css'
 
 import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
 import relativeTime from 'dayjs/plugin/relativeTime'
+
 dayjs.locale('zh-cn')
 dayjs.extend(relativeTime)
 
 const app = createApp(App)
 app.use(router).use(store)
-
+app.directive('loading', vLoading)
 app.config.globalProperties.$dayjs = dayjs
 
 app.mount('#app')
