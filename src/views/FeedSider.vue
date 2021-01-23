@@ -1,12 +1,7 @@
 <template>
-  <section class="container flex flex-row flex-wrap p-6 pt-4">
+  <section class="container flex flex-row flex-wrap pl-6">
     <div class="relative flex-1" v-loading="isLoading">
-      <transition-group
-        appear
-        name="card"
-        tag="div"
-        class="grid grid-cols-1 gap-5 auto-rows-auto sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
-      >
+      <transition-group appear name="card" tag="div" class="grid grid-cols-1 gap-4">
         <!-- <img v-for="(item, index) in feedItems" :key="'card' + index" :src="item.thumbnail" /> -->
         <Card
           class="inline-block"
@@ -23,25 +18,22 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, reactive, ref } from 'vue'
-
-import { IFeed } from '/@/types/interface'
 import { useAxios } from '/@/hooks/useAxios'
+import { IFeed } from '/@/types/interface'
 import Card from '/@/components/Card.vue'
 export default defineComponent({
-  name: 'FeedList',
+  name: 'FeedSider',
   components: { Card },
   props: {},
-  setup() {
+  setup(props) {
     const feedItems = reactive<IFeed[]>([])
     const isLoading = ref(true)
     const fetchFeeds = async () => {
       isLoading.value = true
       const { error, data, finished } = await useAxios('feeders')
-      // const dataItems = data.value.data
-      // const dataMeta = data.value.meta
       if (!error.value) {
         isLoading.value = !finished.value
-        feedItems.splice(0, feedItems.length, ...data.value.data)
+        feedItems.splice(0, feedItems.length, ...data.value.data.slice(0, 4))
       }
     }
     onMounted(() => {
@@ -55,18 +47,3 @@ export default defineComponent({
   },
 })
 </script>
-<style>
-.card-enter-active {
-  transition: all 0.3s ease;
-  transition-delay: calc(var(--i) * 0.1s);
-}
-.card-leave-active {
-  transition: all 0.3s ease;
-  transition-delay: 0;
-}
-.card-enter-from,
-.card-leave-to {
-  opacity: 0;
-  transform: translateY(100%);
-}
-</style>

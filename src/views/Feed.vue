@@ -46,7 +46,8 @@
         <Card v-for="(item, index) in extraItems" :key="'card' + index" :item="item"></Card>
       </div>
     </div>
-    <div class="hidden p-4 md:w-3/12 md:flex">123</div>
+    <!-- <div class="hidden p-4 md:w-3/12 md:flex">123</div> -->
+    <FeedSider class="hidden lg:w-3/12 lg:flex" />
   </section>
 </template>
 
@@ -60,10 +61,10 @@ import {
   Link as IconLink,
 } from '/@/components/HeroiconsOutline/'
 import Card from '/@/components/Card.vue'
-
+import FeedSider from '/@/views/FeedSider.vue'
 export default defineComponent({
   name: 'Feed',
-  components: { Card, IconClock, IconGlobe, IconLink },
+  components: { Card, FeedSider, IconClock, IconGlobe, IconLink },
   props: {
     feedId: {
       type: String,
@@ -75,7 +76,10 @@ export default defineComponent({
     const itemId = computed(() => props.feedId)
     const item = ref({}) as Ref<IFeed>
     const extraItems = reactive([]) as IFeed[]
+
     const fetchFeed = async (id: string) => {
+      item.value = {} as IFeed
+      isLoading.value = true
       const { error, data, finished } = await useAxios(`feeders/${id}`)
       if (!error.value) {
         isLoading.value = !finished.value
@@ -97,6 +101,7 @@ export default defineComponent({
       console.log(event)
     }
     return {
+      isLoading,
       item,
       itemId,
       fetchFeed,
