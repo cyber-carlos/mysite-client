@@ -50,12 +50,44 @@ module.exports = {
             h3: {
               color: theme('colors.carlos.text-accent'),
             },
+            h4: {
+              color: theme('colors.carlos.text-accent'),
+            },
             a: {
               color: theme('colors.carlos.link-secondary'),
               '&:hover': {
                 color: theme('colors.carlos.link-secondary-hover'),
               },
               textDecoration: 'none',
+            },
+            blockquote: {
+              color: theme('colors.carlos.text-primary'),
+              'border-left-color': theme('colors.carlos.bg-tertiary'),
+              'background-color': theme('colors.carlos.bg-secondary'),
+              padding: '.5rem',
+            },
+            pre: {
+              color: theme('colors.carlos.text-primary'),
+              'background-color': theme('colors.carlos.bg-tertiary'),
+            },
+            code: {
+              '&::before': {
+                content: 'none !important',
+              },
+              '&::after': {
+                content: 'none !important',
+              },
+              color: theme('colors.carlos.header'),
+              padding: '.25rem',
+              margin: '0 .25rem',
+              'border-radius': '.25rem',
+              'background-color': theme('colors.carlos.bg-tertiary'),
+            },
+            'ul > li::before': {
+              'background-color': theme('colors.carlos.text-accent'),
+            },
+            'ol> li::before': {
+              color: theme('colors.carlos.text-accent'),
             },
           },
         },

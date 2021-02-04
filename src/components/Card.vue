@@ -3,9 +3,10 @@
     <div
       class="flex flex-col w-full h-full transition-transform duration-300 transform border rounded-lg shadow-md cursor-pointer border-carlos-border place-content-between bg-carlos-bg-tertiary hover:scale-105"
     >
-      <div class="flex-grow-0">
+      <div class="flex-grow-0 rounded-t-lg bg-carlos-bg-secondary">
         <img
-          class="object-cover object-center w-full rounded-t-lg h-36 max-h-36"
+          class="object-center w-full rounded-t-lg h-36 max-h-36"
+          :class="item.hasThumbnail ? 'object-cover' : 'object-contain'"
           :src="item.thumbnail"
           :alt="item.title"
         />
@@ -28,8 +29,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, inject } from 'vue'
-import { Clock as IconClock, Globe as IconGlobe } from '/@/components/HeroiconsOutline/'
+import { computed, defineComponent } from 'vue'
+import { Clock as IconClock, Globe as IconGlobe } from '@/components/HeroiconsOutline/'
+import ImageThumbnail from '@/assets/logo.png'
 
 export default defineComponent({
   name: 'Card',
@@ -45,8 +47,15 @@ export default defineComponent({
   setup(props) {
     const item = computed(() => {
       const result = props.item
-      // console.log(result.author)
+      console.log(result.thumbnail)
       result.author = result.author || ''
+      if(result.thumbnail) {
+        result.thumbnail = result.thumbnail
+        result.hasThumbnail = true
+      } else {
+        result.thumbnail = ImageThumbnail
+        result.hasThumbnail = false
+      }
       return result
     })
     return {

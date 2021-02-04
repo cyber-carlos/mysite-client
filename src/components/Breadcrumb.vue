@@ -28,7 +28,7 @@ import {
   Home as IconHome,
   ChevronRight as IconChevronRight,
   LightBulb as IconLightBulb,
-} from '/@/components/HeroiconsOutline'
+} from '@/components/HeroiconsOutline'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 

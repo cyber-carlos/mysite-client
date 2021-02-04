@@ -18,9 +18,10 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, reactive, ref } from 'vue'
-import { useAxios } from '/@/hooks/useAxios'
-import { IFeed } from '/@/types/interface'
-import Card from '/@/components/Card.vue'
+import { useAxios } from '@/hooks/useAxios'
+import { IFeed } from '@/types/interface'
+import Card from '@/components/Card.vue'
+
 export default defineComponent({
   name: 'FeedSider',
   components: { Card },

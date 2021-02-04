@@ -24,9 +24,10 @@
 <script lang="ts">
 import { defineComponent, onMounted, reactive, ref } from 'vue'
 
-import { IFeed } from '/@/types/interface'
-import { useAxios } from '/@/hooks/useAxios'
-import Card from '/@/components/Card.vue'
+import { IFeed } from '@/types/interface'
+import { useAxios } from '@/hooks/useAxios'
+import Card from '@/components/Card.vue'
+
 export default defineComponent({
   name: 'FeedList',
   components: { Card },

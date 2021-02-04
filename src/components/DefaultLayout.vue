@@ -55,15 +55,15 @@
 
 <script lang="ts">
 import { computed, defineComponent, onMounted, watchEffect } from 'vue'
-import CustomRouterView from '/@/components/CustomRouterView.vue'
+import CustomRouterView from '@/components/CustomRouterView.vue'
 import { useStore } from 'vuex'
-import Breadcrumb from '/@/components/Breadcrumb.vue'
-import AppFooter from '/@/components/AppFooter.vue'
+import Breadcrumb from '@/components/Breadcrumb.vue'
+import AppFooter from '@/components/AppFooter.vue'
 import {
   Home as IconHome,
   Rss as IconRss,
   InformationCircle as IconInformationCircle,
-} from '/@/components/HeroiconsOutline'
+} from '@/components/HeroiconsOutline'
 
 export default defineComponent({
   name: 'DefaultLayout',

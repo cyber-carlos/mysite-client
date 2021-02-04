@@ -22,7 +22,7 @@
         </div>
       </div>
       <article
-        class="mt-8 prose max-w-none text-carlos-text-primary dark:prose-dark"
+        class="mt-8 prose max-w-max text-carlos-text-primary dark:prose-dark"
         v-html="item.description"
       ></article>
       <hr class="mt-8 border-carlos-border" />
@@ -53,15 +53,16 @@
 
 <script lang="ts">
 import { computed, defineComponent, reactive, Ref, ref, watchEffect } from 'vue'
-import { useAxios } from '/@/hooks/useAxios'
-import { IFeed } from '/@/types/interface'
+import { useAxios } from '@/hooks/useAxios'
+import { IFeed } from '@/types/interface'
 import {
   Clock as IconClock,
   Globe as IconGlobe,
   Link as IconLink,
-} from '/@/components/HeroiconsOutline/'
-import Card from '/@/components/Card.vue'
-import FeedSider from '/@/views/FeedSider.vue'
+} from '@/components/HeroiconsOutline/'
+import Card from '@/components/Card.vue'
+import FeedSider from '@/views/FeedSider.vue'
+
 export default defineComponent({
   name: 'Feed',
   components: { Card, FeedSider, IconClock, IconGlobe, IconLink },
@@ -84,6 +85,10 @@ export default defineComponent({
       if (!error.value) {
         isLoading.value = !finished.value
         item.value = data.value.data
+        item.value.description = item.value.description.replace(/<style[^>]*>.*?<\/style>/g, '')
+        item.value.description = item.value.description.replace(/<code[^>]*>*<template[^>]*/g, '<code>&lt;template')
+        item.value.description = item.value.description.replace(/<code[^>]*>*<script[^>]*/g, '<code>&lt;script')
+        item.value.description = item.value.description.replace(/<span class="copy-code-btn">复制代码<\/span>/g, '') // 掘金
         item.value.description = item.value.description.replace(
           /<img /g,
           '<img class="m-auto border rounded max-w-img border-carlos-border" '

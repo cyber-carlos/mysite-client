@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import DefaultLayout from '/@/components/DefaultLayout.vue'
-import CustomRouterView from '/@/components/CustomRouterView.vue'
+import DefaultLayout from '@/components/DefaultLayout.vue'
+import CustomRouterView from '@/components/CustomRouterView.vue'
 
-import FeedList from '/@/views/FeedList.vue'
-import Feed from '/@/views/Feed.vue'
-import About from '/@/views/About.vue'
+import FeedList from '@/views/FeedList.vue'
+import Feed from '@/views/Feed.vue'
+import About from '@/views/About.vue'
 
 const router = createRouter({
   history: createWebHistory(),

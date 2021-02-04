@@ -6,7 +6,7 @@ import App from './App.vue'
 
 import vLoading from './directives/vLoading'
 
-import '/@/assets/css/index.css'
+import '@/assets/css/index.css'
 
 import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'

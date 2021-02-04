@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse, CancelTokenSource } from 'axios'
 import { Ref, ref } from 'vue'
-import Config from '/@/config'
+import Config from '@/config'
 import * as nprogress from 'nprogress'
 import 'nprogress/nprogress.css'
 
