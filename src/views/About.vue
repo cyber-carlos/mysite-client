@@ -11,7 +11,7 @@ export default defineComponent({
   name: 'About',
   components: {},
   props: {},
-  setup(props) {
+  setup() {
     const data = reactive({})
 
     return {
@@ -20,5 +20,3 @@ export default defineComponent({
   },
 })
 </script>
-
-<style></style>

@@ -1,7 +1,8 @@
 <template>
   <section class="container flex flex-row flex-wrap pl-6">
     <div class="relative flex-1" v-loading="isLoading">
-      <transition-group appear name="card" tag="div" class="grid grid-cols-1 gap-4">
+      <!-- <transition-group appear name="card" tag="div" class="grid grid-cols-1 gap-4"> -->
+        <transition-group appear name="card" tag="div" class="">
         <!-- <img v-for="(item, index) in feedItems" :key="'card' + index" :src="item.thumbnail" /> -->
         <Card
           class="inline-block"

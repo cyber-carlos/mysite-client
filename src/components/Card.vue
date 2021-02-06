@@ -16,12 +16,12 @@
         class="flex flex-row justify-between flex-grow-0 px-2 pb-2 text-xs flex-nowrap text-carlos-text-secondary"
       >
         <div class="whitespace-nowrap overflow-ellipsis" v-if="item.source || item.author">
-          <IconGlobe class="inline w-4 h-4 mr-1" />{{
-            `${item.source?.name || ''} ${item.author || ''}`
-          }}
+          <!-- <IconGlobe class="inline w-4 h-4 mr-1" /> -->
+          {{ `${item.source?.name || ''} ${item.author || ''}` }}
         </div>
         <div class="ml-auto whitespace-nowrap overflow-ellipsis">
-          <IconClock class="inline w-4 h-4 mr-1" />{{ $dayjs(item.pubDate).fromNow() }}
+          <!-- <IconClock class="inline w-4 h-4 mr-1" /> -->
+          {{ $dayjs(item.pubDate).fromNow() }}
         </div>
       </div>
     </div>
@@ -30,12 +30,11 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import { Clock as IconClock, Globe as IconGlobe } from '@/components/HeroiconsOutline/'
-import ImageThumbnail from '@/assets/logo.png'
+import ImageThumbnail from '@/assets/img/logo.png'
 
 export default defineComponent({
   name: 'Card',
-  components: { IconClock, IconGlobe },
+  components: {},
   props: {
     item: {
       type: Object,
@@ -47,9 +46,8 @@ export default defineComponent({
   setup(props) {
     const item = computed(() => {
       const result = props.item
-      console.log(result.thumbnail)
       result.author = result.author || ''
-      if(result.thumbnail) {
+      if (result.thumbnail) {
         result.thumbnail = result.thumbnail
         result.hasThumbnail = true
       } else {

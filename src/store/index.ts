@@ -3,6 +3,7 @@ import { createLogger, createStore } from 'vuex'
 const store = createStore({
   state: {
     isDark: true,
+    navIsExpanded: true,
     sourcesData: [],
   },
   getters: {},
@@ -10,6 +11,9 @@ const store = createStore({
   mutations: {
     changeTheme(state, value) {
       state.isDark = value
+    },
+    updateNavState(state, value) {
+      state.navIsExpanded = value
     },
     updateSourcesData(state, value) {
       state.sourcesData = value

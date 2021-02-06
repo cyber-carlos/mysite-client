@@ -1,12 +1,13 @@
 <template>
-  <section class="container flex flex-row flex-wrap p-6 pt-4">
+  <section class="container flex flex-row flex-wrap">
     <div class="relative flex-1" v-loading="isLoading">
-      <transition-group
+      <!-- <transition-group
         appear
         name="card"
         tag="div"
         class="grid grid-cols-1 gap-5 auto-rows-auto sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
-      >
+      > -->
+      <transition-group appear name="card" tag="div" class="auto-rows-auto">
         <!-- <img v-for="(item, index) in feedItems" :key="'card' + index" :src="item.thumbnail" /> -->
         <Card
           class="inline-block"

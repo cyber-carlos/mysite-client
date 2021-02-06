@@ -1,11 +1,11 @@
 <template>
   <div v-if="$route.path !== '/'" class="flex px-8 pt-3.5 text-sm text-carlos-text-secondary">
     <div v-for="(item, index) in items" :key="index">
-      <IconHome v-if="index === 0" class="inline-block w-3 h-3 mr-1" />
+      <!-- <IconHome v-if="index === 0" class="inline-block w-3 h-3 mr-1" />
       <IconChevronRight
         v-else-if="index < items.length && item.meta.label"
         class="inline-block w-3 h-3 ml-1"
-      />
+      /> -->
       <router-link :to="item.path" class="hover:text-carlos-link-primary-hover">{{
         item.meta.label
       }}</router-link>
@@ -23,18 +23,13 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, reactive, toRaw, toRefs, watchEffect } from 'vue'
-import {
-  Home as IconHome,
-  ChevronRight as IconChevronRight,
-  LightBulb as IconLightBulb,
-} from '@/components/HeroiconsOutline'
+import { computed, defineComponent, reactive, watchEffect } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 
 export default defineComponent({
   name: 'Breadcrumb',
-  components: { IconHome, IconChevronRight, IconLightBulb },
+  components: {},
   props: {},
   setup(props) {
     const { currentRoute } = useRouter()

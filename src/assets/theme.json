@@ -1,0 +1,18 @@
+{
+  "dark": {
+    "--app-bg": "#161b28",
+    "--box-bg": "#1d2333",
+    "--box-bg-alt": "#21283b",
+    "--color-primary": "#f44f61",
+    "--text-regular": "#e5e7eb",
+    "--icon": "#616a82"
+  },
+  "light": {
+    "--app-bg": "#f8f8fb",
+    "--box-bg": "#ffffff",
+    "--box-bg-alt": "#fcfcfd",
+    "--color-primary": "#f44f61",
+    "--text-regular": "#3e3f5e",
+    "--icon": "#adafca"
+  }
+}
