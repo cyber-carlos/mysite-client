@@ -8,5 +8,6 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'CustomRouterView',
   setup() {},
+  // TODO: keepAlive
 })
 </script>

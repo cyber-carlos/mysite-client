@@ -1,10 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import { DefaultLayout, CustomRouterView} from '@/components/layout'
+import { LayoutDefault, CustomRouterView } from '@/components/layout'
 
 import FeedList from '@/views/FeedList.vue'
 import Feed from '@/views/Feed.vue'
 import About from '@/views/About.vue'
+import Components from '@/views/Components.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -13,19 +14,30 @@ const router = createRouter({
       path: '/',
       name: 'Home',
       redirect: '/feed',
-      component: DefaultLayout,
+      component: LayoutDefault,
       meta: { label: 'Home' },
       children: [
         {
           path: '/feed',
           component: CustomRouterView,
-          meta: { label: '阅读', icon:'newspaper-folding' },
+          meta: { label: '阅读', icon: 'newspaper-folding' },
           children: [
             { path: '/feed/', name: 'FeedList', component: FeedList },
             { path: '/feed/:feedId', name: 'Feed', component: Feed, props: true },
           ],
         },
-        { path: '/about', name: 'About', component: About, meta: { label: '关于', icon: 'tips-one' } },
+        {
+          path: '/components',
+          name: 'Components',
+          component: Components,
+          meta: { label: '组件', icon: 'figma-component' },
+        },
+        {
+          path: '/about',
+          name: 'About',
+          component: About,
+          meta: { label: '关于', icon: 'tips-one' },
+        },
       ],
     },
   ],

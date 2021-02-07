@@ -5,8 +5,6 @@
 <script lang="ts">
 import { computed, defineComponent, onMounted, watchEffect } from 'vue'
 import { useStore } from 'vuex'
-import { hex2rgb } from '@/utils'
-import ThemeJson from '@/assets/theme.json'
 
 export default defineComponent({
   name: 'App',
@@ -16,13 +14,16 @@ export default defineComponent({
     const isDark = computed(() => state.isDark)
 
     onMounted(() => {
-      const domApp = document.getElementById('app')
       watchEffect(() => {
-        // document.body.classList.remove('dark', 'light')
-        Object.entries(ThemeJson[isDark.value ? 'dark' : 'light']).forEach((e) => {
-          domApp?.style.setProperty(e[0], hex2rgb(e[1]))
-        })
-        // isDark.value ? document.body.classList.add('dark') : document.body.classList.add('light')
+        document.body.classList.remove('theme-dark', 'theme-light')
+        // Object.entries(ThemeJson[isDark.value ? 'dark' : 'light']).forEach((e) => {
+        //   domApp?.style.setProperty(e[0], hex2rgb(e[1]))
+        //   console.log(h2g(e[1]))
+        // })
+
+        isDark.value
+          ? document.body.classList.add('theme-dark')
+          : document.body.classList.add('theme-light')
       })
     })
   },

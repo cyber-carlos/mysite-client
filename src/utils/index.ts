@@ -1,3 +1,3 @@
-import hex2rgb from './hex2rgb'
+import { hex2rgb, lighten } from './color'
 
-export { hex2rgb }
+export { hex2rgb, lighten }

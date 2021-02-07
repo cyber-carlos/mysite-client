@@ -1,0 +1,32 @@
+@import '@/components/common/CButton/CButton.css';
+@import '@/components/common/CLink/CLink.css';
+
+@layer components {
+  .header-logo {
+    filter: drop-shadow(2px 2px 2px black);
+  }
+  .heartbeating {
+    animation: heartbeating 2s ease infinite;
+  }
+
+  @keyframes heartbeating {
+    0% {
+      transform: scale(0.75);
+    }
+    20% {
+      transform: scale(1);
+    }
+    40% {
+      transform: scale(0.75);
+    }
+    60% {
+      transform: scale(1);
+    }
+    80% {
+      transform: scale(0.75);
+    }
+    100% {
+      transform: scale(0.75);
+    }
+  }
+}

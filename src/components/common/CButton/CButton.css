@@ -1,0 +1,27 @@
+@layer components {
+  .c-button {
+    @apply px-4 h-6 rounded focus:ring-0 focus:ring-carlos-border focus:outline-none ring-opacity-50;
+    @apply bg-carlos-bg3 hover:bg-carlos-bg3-hover active:bg-carlos-bg3-active;
+    @apply text-opacity-90 hover:text-opacity-100;
+
+    &.c-button--border {
+      @apply border border-carlos-border;
+    }
+    &.c-button--primary {
+      @apply bg-carlos-primary hover:bg-carlos-primary-hover active:bg-carlos-primary-active border-0;
+    }
+    &.is-transparent {
+      @apply bg-transparent border-0;
+    }
+    &.is-disabled {
+      @apply cursor-not-allowed;
+    }
+    &.is-loading {
+      @apply cursor-wait;
+    }
+    /* FIXME 垂直位置偏差，应该是某个line-height捣蛋 */
+    & .i-icon {
+      vertical-align: -.2rem;
+    }
+  }
+}

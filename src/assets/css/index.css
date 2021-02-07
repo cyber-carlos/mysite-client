@@ -1,64 +1,7 @@
-:root {
-  /* --color-primary: 37, 99, 235;
-  
-  --text-primary: #f4e0f1;
-  --text-secondary: #9479b9;
-  --text-tertiary: #ffd3f8;
-  --text-accent: #ffe69d;
+@import 'tailwindcss/base';
+@import './base.css';
 
-  --link-primary: #b886fd;
-  --link-primary-hover: var(--link-primary);
-  --link-secondary: #4edee5;
-  --link-secondary-hover: var(--link-secondary);
+@import 'tailwindcss/components';
+@import './components.css';
 
-  --bg-primary: #2f263c;
-  --bg-secondary: #281e36;
-  --bg-tertiary: #1c1428;
-  --bg-accent: #642f45;
-  --border: #44395d;
-  --header: #c83b50;
-  --gray-normal: #27292d; */
-}
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-  * {
-    @apply transition-colors duration-75 ease-in-out;
-  }
-  header {
-    backdrop-filter: saturate(150%) contrast(80%) blur(10px);
-  }
-}
-
-@layer components {
-  .header-logo {
-    filter: drop-shadow(2px 2px 2px black);
-  }
-  .heartbeating {
-    animation: heartbeating 2s ease infinite;
-  }
-
-  @keyframes heartbeating {
-    0% {
-      transform: scale(0.75);
-    }
-    20% {
-      transform: scale(1);
-    }
-    40% {
-      transform: scale(0.75);
-    }
-    60% {
-      transform: scale(1);
-    }
-    80% {
-      transform: scale(0.75);
-    }
-    100% {
-      transform: scale(0.75);
-    }
-  }
-}
+@import 'tailwindcss/utilities';

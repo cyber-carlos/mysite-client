@@ -1,34 +1,36 @@
 <template>
-  <nav
-    class="fixed w-48 h-full pt-4 text-sm transition-transform duration-300 ease-in-out transform bg-carlos-box mt-14"
-    :class="expandedClass"
-  >
-    <router-link
-      v-for="(item, index) in menuItems"
-      :key="index"
-      class="flex items-center px-6 py-2"
-      :class="[$route.matched[1]?.name === item.name ? activeClass : inactiveClass]"
-      :to="item.path"
+  <div>
+    <nav
+      class="absolute w-48 h-full pt-4 ease-linear transform transition-carlos mt-14 bg-carlos-bg2"
+      :class="expandedClass"
     >
-      <IconPark :name="item.meta?.icon || 'square-small'" size="1.125rem" />
-      <span class="mx-4">{{ item.meta?.label || '' }}</span>
-    </router-link>
-  </nav>
-  <nav
-    class="fixed w-20 h-full pt-4 text-sm transition-transform duration-300 ease-in-out transform bg-carlos-box mt-14"
-    :class="collapsedClass"
-  >
-    <router-link
-      v-for="(item, index) in menuItems"
-      :key="index"
-      class="flex items-center px-6 py-2"
-      :class="[$route.matched[1]?.name === item.name ? activeClass : inactiveClass]"
-      :to="item.path"
+      <router-link
+        v-for="(item, index) in menuItems"
+        :key="index"
+        class="flex items-center px-6 py-2"
+        :class="[$route.matched[1]?.name === item.name ? activeClass : inactiveClass]"
+        :to="item.path"
+      >
+        <IconPark :name="item.meta?.icon || 'square-small'" size="1.5rem" />
+        <span class="mx-4">{{ item.meta?.label || '' }}</span>
+      </router-link>
+    </nav>
+    <nav
+      class="absolute w-20 h-full pt-4 ease-linear transform transition-carlos mt-14 bg-carlos-bg2"
+      :class="collapsedClass"
     >
-      <IconPark :name="item.meta?.icon || 'square-small'" size="1.25rem" />
-      <!-- <span class="mx-4">{{ item.meta?.label || '' }}</span> -->
-    </router-link>
-  </nav>
+      <router-link
+        v-for="(item, index) in menuItems"
+        :key="index"
+        class="block w-full px-6 py-2 text-center"
+        :class="[$route.matched[1]?.name === item.name ? activeClass : inactiveClass]"
+        :to="item.path"
+      >
+        <IconPark :name="item.meta?.icon || 'square-small'" size="1.5rem" />
+        <!-- <span class="mx-4">{{ item.meta?.label || '' }}</span> -->
+      </router-link>
+    </nav>
+  </div>
 </template>
 
 <script lang="ts">
@@ -49,21 +51,27 @@ export default defineComponent({
   },
   setup() {
     const menuItems = computed(() => useRouter().options.routes[0].children)
-    const activeClass = ref('text-carlos-primary')
-    const inactiveClass = ref('text-carlos')
+    const activeClass = ref('text-carlos-primary hover:text-carlos-primary-hover')
+    const inactiveClass = ref('text-carlos-nav-button hover:text-carlos-nav-button-light')
 
     const { state } = useStore()
     const navIsExpanded = computed(() => state.navIsExpanded)
-    const expandedClass = ref('')
-    const collapsedClass = ref('')
+    const expandedClass = ref(navIsExpanded ? 'translate-x-0' : '-translate-x-full')
+    const collapsedClass = ref(navIsExpanded ? '-translate-x-full' : 'translate-x-0')
     watchEffect(() => {
       if (navIsExpanded.value) {
-        expandedClass.value = 'translate-x-0 delay-300'
-        collapsedClass.value = '-translate-x-full '
+        collapsedClass.value = '-translate-x-full duration-400'
+        expandedClass.value = 'translate-x-0 delay-400 duration-400'
       } else {
-        expandedClass.value = '-translate-x-full'
-        collapsedClass.value = 'translate-x-0 delay-300'
+        expandedClass.value = '-translate-x-full duration-400'
+        collapsedClass.value = 'translate-x-0 delay-400 duration-400'
       }
+      setTimeout(() => {
+        expandedClass.value = expandedClass.value.replace('delay-400', '')
+        collapsedClass.value = collapsedClass.value.replace('delay-400', '')
+        expandedClass.value = expandedClass.value.replace('duration-400', '')
+        collapsedClass.value = collapsedClass.value.replace('duration-400', '')
+      }, 1000)
     })
 
     return {

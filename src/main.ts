@@ -17,11 +17,14 @@ dayjs.extend(relativeTime)
 
 // icon-park
 import { install as IconParkInstall } from '@icon-park/vue-next/es/all'
-import IconPark from '@/components/common/IconPark.vue'
+import '@icon-park/vue-next/styles/index.css'
 // import { DEFAULT_ICON_CONFIGS, IconProvider } from '@icon-park/vue-next'
 // console.log(DEFAULT_ICON_CONFIGS)
 // IconProvider({ ...DEFAULT_ICON_CONFIGS, prefix: 'icon' })
 // import '@icon-park/vue-next/styles/index.css'
+
+// global components
+import * as GlobalComponents from '@/components/common'
 
 // init
 const app = createApp(App)
@@ -29,7 +32,7 @@ app.use(router).use(store)
 app.directive('loading', vLoading)
 
 IconParkInstall(app)
-app.component('IconPark', IconPark)
+Object.entries(GlobalComponents).forEach((c) => app.component(c[0], c[1]))
 
 app.config.globalProperties.$dayjs = dayjs
 

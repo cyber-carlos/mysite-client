@@ -1,28 +1,42 @@
 const colors = require('tailwindcss/colors')
-
-const generateColor = (rootVariable, opacityVariable, opacityValue) => {
-  if (opacityValue !== undefined) return `rgba(var(${rootVariable}), ${opacityValue})`
-  if (opacityVariable !== undefined) return `rgba(var(${rootVariable}), var(${opacityVariable}, 1))`
-  return `rgb(var(${rootVariable}))`
-}
+// const generateColor = (rootVariable, opacityVariable, opacityValue) => {
+//   if (opacityValue !== undefined) return `rgba(var(${rootVariable}), ${opacityValue})`
+//   if (opacityVariable !== undefined) return `rgba(var(${rootVariable}), var(${opacityVariable}, 1))`
+//   return `rgb(var(${rootVariable}))`
+// }
+// body: (value) => generateColor('--app-bg', value.bgOpacityVariable, value.bgOpacityValue),
 
 module.exports = {
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx,css}'],
-  darkMode: 'class', // or 'media' or 'class'
+  darkMode: false, // or 'media' or 'class'
   theme: {
     colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
       white: colors.white,
       black: colors.black,
       carlos: {
-        body: (value) => generateColor('--app-bg', value.opacityVariable, value.opacityValue),
-        box: (value) => generateColor('--box-bg', value.opacityVariable, value.opacityValue),
-        'box-alt': (value) =>
-          generateColor('--box-bg-alt', value.opacityVariable, value.opacityValue),
-        primary: (value) =>
-          generateColor('--color-primary', value.opacityVariable, value.opacityValue),
-        DEFAULT: (value) =>
-          generateColor('--text-regular', value.opacityVariable, value.opacityValue),
-        icon: (value) => generateColor('--icon', value.opacityVariable, value.opacityValue),
+        'header-button': 'var(--header-button)',
+        'header-button-light': 'var(--header-button-light)',
+        'nav-button': 'var(--nav-button)',
+        'nav-button-light': 'var(--nav-button-light)',
+
+        bg1: 'var(--bg1)',
+        bg2: 'var(--bg2)',
+        'bg2-hover': 'var(--bg2-hover)',
+        'bg2-active': 'var(--bg2-active)',
+        bg3: 'var(--bg3)',
+        'bg3-hover': 'var(--bg3-hover)',
+        'bg3-active': 'var(--bg3-active)',
+        bg4: 'var(--bg4)',
+
+        primary: 'var(--primary)',
+        'primary-hover': 'var(--primary-hover)',
+        'primary-active': 'var(--primary-active)',
+        text: 'var(--text)',
+        icon: 'var(--icon)',
+
+        border: 'var(--border)',
       },
       // carlos: {
       //   'gray-normal': 'var(--gray-normal)',
@@ -51,14 +65,26 @@ module.exports = {
       },
       maxWidth: {
         img: '80%',
+        20: '5rem',
+        48: '12rem',
         'main-max': '1184px',
         'main-lg': '1142px',
       },
-      flex: {
-        '0048': '0 0 12rem',
-      },
+      flex: {},
       boxShadow: {
-        header: '0 3px 3px 0 rgba(0, 0, 0, 0.2), 0 3px 3px 0 rgba(0, 0, 0, 0.1)',
+        header: '0 3px 3px 0 rgba(0, 0, 0, 0.2), 0 3px 3px 0 rgba(0, 0, 0, 0.2)',
+      },
+      transitionProperty: {
+        carlos:
+          'width, height, margin, padding, background-color, border-color, color, fill, stroke, transform',
+      },
+      transitionDuration: {
+        400: '400ms',
+        600: '600ms',
+        800: '800ms',
+      },
+      transitionDelay: {
+        400: '400ms',
       },
       gridTemplateColumns: {},
       gridTemplateRows: {},
@@ -124,7 +150,8 @@ module.exports = {
   },
   variants: {
     extend: {
-      backgroundOpacity: ['dark'],
+      backgroundColor: ['active'],
+      // backgroundOpacity: ['dark'],
     },
     typography: ['responsive'],
   },

@@ -1,7 +1,7 @@
 <template>
   <router-link :to="{ name: 'Feed', params: { feedId: item.id } }">
     <div
-      class="flex flex-col w-full h-full transition-transform duration-300 transform border rounded-lg shadow-md cursor-pointer border-carlos-border place-content-between bg-carlos-bg-tertiary hover:scale-105"
+      class="flex flex-col w-full h-full border rounded-lg shadow-md cursor-pointer transition-carlos border-carlos-border place-content-between bg-carlos-bg-tertiary hover:scale-105"
     >
       <div class="flex-grow-0 rounded-t-lg bg-carlos-bg-secondary">
         <img

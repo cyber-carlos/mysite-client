@@ -1,0 +1,14 @@
+@layer components {
+  .c-link {
+    /* @apply focus:ring-0 focus:ring-carlos-border focus:outline-none ring-opacity-50; */
+    @apply text-carlos-text hover:text-carlos-primary-hover;
+    /* @apply text-opacity-90 hover:text-opacity-100; */
+
+    &.c-link--primary {
+      @apply text-carlos-primary hover:text-carlos-primary-hover;
+    }
+    &.is-disabled {
+      @apply cursor-not-allowed;
+    }
+  }
+}

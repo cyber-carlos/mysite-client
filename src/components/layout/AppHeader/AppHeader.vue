@@ -2,59 +2,33 @@
   <!-- <header
     class="fixed z-50 flex flex-row items-center w-full px-4 bg-opacity-50 shadow-header bg-light-primary dark:bg-dark-primary h-14 dark:bg-opacity-50"
   > -->
-  <header
-    class="fixed z-50 flex flex-row items-center w-full bg-opacity-80 shadow-header h-14 bg-carlos-primary"
-  >
-    <AppHeaderLogo />
-    <AppHeaderTrigger />
+  <header>
+    <div class="w-48 pl-4 text-sm">
+      <router-link to="/" class="inline-block">
+        <img :src="imageLogo" class="inline w-8 h-8 header-logo" />
+        <span class="ml-2">卡叔实验室</span>
+      </router-link>
+    </div>
+    <AppHeaderNavTrigger />
     <AppHeaderExtra />
-    <!-- <div class="flex justify-center flex-grow">
-      <router-link
-        class="flex col-span-2 mx-4 text-sm text-center rounded bg-carlos-bg-accent"
-        :to="{ name: 'Home' }"
-      >
-        <div class="p-2 text-white bg-black bg-opacity-25 rounded-l">
-          <IconHome class="inline w-4 h-4 mr-1 align-middle" />Home
-        </div>
-        <div class="px-4 py-2 ml-auto text-carlos-text-tertiary">主页</div>
-      </router-link>
-      <router-link
-        class="flex col-span-2 mx-4 text-sm text-center bg-opacity-25 rounded bg-carlos-bg-accent"
-        :to="{ name: 'FeedList' }"
-      >
-        <div class="p-2 text-white bg-black bg-opacity-25 rounded-l">
-          <IconRss class="inline w-4 h-4 mr-1 align-middle" />Feed
-        </div>
-        <div class="px-4 py-2 ml-auto text-carlos-text-tertiary">阅读</div>
-      </router-link>
-      <router-link
-        class="flex col-span-2 mx-4 text-sm text-center rounded bg-carlos-bg-accent"
-        :to="{ name: 'About' }"
-      >
-        <div class="p-2 text-white bg-black bg-opacity-25 rounded-l">
-          <IconInformationCircle class="inline w-4 h-4 mr-1 align-middle" />About
-        </div>
-        <div class="px-4 py-2 ml-auto text-carlos-text-tertiary">我</div>
-      </router-link>
-    </div> -->
   </header>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs } from 'vue'
-import AppHeaderLogo from './AppHeaderLogo'
-import AppHeaderTrigger from './AppHeaderTrigger'
-import AppHeaderExtra from './AppHeaderExtra'
+import { defineComponent, reactive, ref, toRefs } from 'vue'
+import AppHeaderNavTrigger from './AppHeaderNavTrigger.vue'
+import AppHeaderExtra from './AppHeaderExtra.vue'
+
+import ImageLogo from '@/assets/img/logo.png'
 
 export default defineComponent({
   name: 'AppHeader',
-  components: { AppHeaderLogo, AppHeaderTrigger, AppHeaderExtra },
+  components: { AppHeaderNavTrigger, AppHeaderExtra },
   props: {},
   setup() {
-    const data = reactive({})
-
+    const imageLogo = ref(ImageLogo)
     return {
-      ...toRefs(data),
+      imageLogo,
     }
   },
 })
