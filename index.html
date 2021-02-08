@@ -1,13 +1,206 @@
 <!DOCTYPE html>
 <html lang="zh-Hans">
-<head>
-  <meta charset="UTF-8">
-  <link rel="icon" href="/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>卡叔实验室</title>
-</head>
-<body>
-  <div id="app"></div>
-  <script type="module" src="/src/main.ts"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>卡叔实验室</title>
+  </head>
+  <body>
+    <div id="app-loader">
+      <style>
+        :root {
+          --color-loader-bar-1: #615dfa;
+          --color-loader-bar-2: #5d71fb;
+          --color-loader-bar-3: #5983fb;
+          --color-loader-bar-4: #549afc;
+          --color-loader-bar-5: #4eb2fd;
+          --color-loader-bar-6: #49c9fe;
+          --color-loader-bar-7: #45ddfe;
+          --color-loader-bar-8: #41efff;
+        }
+        body {
+          margin: 0;
+          font-size: 16px;
+        }
+        #app-loader {
+          min-height: 100vh;
+          max-height: 100vh;
+          height: 100vh;
+          width: 100vw;
+          min-width: 100vw;
+          max-width: 100vw;
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+          flex-direction: column;
+          -webkit-box-pack: center;
+          -webkit-justify-content: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+          -webkit-box-align: center;
+          -webkit-align-items: center;
+          -ms-flex-align: center;
+          align-items: center;
+          background-color: #1d2333;
+          position: fixed;
+          z-index: 9999;
+          -webkit-transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+          transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+        }
+        .loader-bars {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: center;
+          -webkit-justify-content: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+          height: 40px;
+          margin-top: 50px;
+        }
+        .loader-bars .loader-bar {
+          width: 4px;
+          height: 100%;
+          margin-right: 4px;
+          border-radius: 200px;
+          -ms-transform: scaleY(0.2);
+          transform: scaleY(0.2);
+          -webkit-transform: scaleY(0.2);
+          animation: loader-bars 0.5s infinite alternate ease-in;
+          -webkit-animation: loader-bars 0.5s infinite alternate ease-in;
+        }
+        .loader-bars .loader-bar:last-child {
+          margin-right: 0;
+        }
+        .loader-bars .loader-bar:nth-child(1) {
+          background-color: var(--color-loader-bar-1);
+        }
+        .loader-bars .loader-bar:nth-child(2) {
+          background-color: var(--color-loader-bar-2);
+          -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s;
+        }
+        .loader-bars .loader-bar:nth-child(3) {
+          background-color: var(--color-loader-bar-3);
+          -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+        }
+        .loader-bars .loader-bar:nth-child(4) {
+          background-color: var(--color-loader-bar-4);
+          -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+        }
+        .loader-bars .loader-bar:nth-child(5) {
+          background-color: var(--color-loader-bar-5);
+          -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+        }
+        .loader-bars .loader-bar:nth-child(6) {
+          background-color: var(--color-loader-bar-6);
+          -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+        }
+        .loader-bars .loader-bar:nth-child(7) {
+          background-color: var(--color-loader-bar-7);
+          -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+        }
+        .loader-bars .loader-bar:nth-child(8) {
+          background-color: var(--color-loader-bar-8);
+          -webkit-animation-delay: 0.7s;
+          animation-delay: 0.7s;
+        }
+
+        @-webkit-keyframes loader-bars {
+          0% {
+            -webkit-transform: scaleY(0.2);
+            transform: scaleY(0.2);
+          }
+          100% {
+            -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+          }
+        }
+
+        @keyframes loader-bars {
+          0% {
+            -webkit-transform: scaleY(0.2);
+            transform: scaleY(0.2);
+          }
+          100% {
+            -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+          }
+        }
+        .app-loader-info .app-loader-info-title,
+        .app-loader-info .app-loader-info-detail {
+          color: #ffffff;
+          text-align: center;
+          margin: 0;
+        }
+
+        .app-loader-info .app-loader-info-title {
+          margin-top: 24px;
+          font-size: 1.75rem;
+          line-height: 2.625rem;
+          font-weight: 900;
+        }
+
+        .app-loader-info .app-loader-info-detail {
+          margin-top: 10px;
+          font-size: 0.75rem;
+          line-height: 1.125rem;
+          font-weight: 700;
+        }
+
+        .app-loader-logo {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: center;
+          -webkit-justify-content: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+          -webkit-box-align: center;
+          -webkit-align-items: center;
+          -ms-flex-align: center;
+          align-items: center;
+          height: 80px;
+          width: 80px;
+        }
+
+        .app-loader-logo img {
+          height: 80px;
+          width: 80px;
+        }
+      </style>
+      <div class="app-loader-logo">
+        <img src="/logo.png" />
+      </div>
+      <div class="app-loader-info">
+        <p class="app-loader-info-title">卡叔实验室</p>
+        <p class="app-loader-info-detail">载入中...</p>
+      </div>
+      <div class="loader-bars">
+        <div class="loader-bar"></div>
+        <div class="loader-bar"></div>
+        <div class="loader-bar"></div>
+        <div class="loader-bar"></div>
+        <div class="loader-bar"></div>
+        <div class="loader-bar"></div>
+        <div class="loader-bar"></div>
+        <div class="loader-bar"></div>
+      </div>
+    </div>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>
