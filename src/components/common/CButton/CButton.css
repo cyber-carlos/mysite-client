@@ -2,7 +2,7 @@
   .c-button {
     @apply px-4 h-6 rounded focus:ring-0 focus:ring-carlos-border focus:outline-none ring-opacity-50;
     @apply bg-carlos-bg3 hover:bg-carlos-bg3-hover active:bg-carlos-bg3-active;
-    @apply text-opacity-90 hover:text-opacity-100;
+    @apply text-sm text-opacity-90 hover:text-opacity-100 whitespace-nowrap;
 
     &.c-button--border {
       @apply border border-carlos-border;

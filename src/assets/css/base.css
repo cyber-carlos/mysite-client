@@ -18,6 +18,7 @@
     --primary-active: #f23146ff;
 
     --text-primary: #3e3f5eff;
+    --text-secondary: #adafcaff;
 
     --icon: #adafcaff;
 
@@ -25,7 +26,9 @@
     --nav-button-light: #adafcaee;
 
     --border: #dedeeaff;
-
+    --divider: #eaeaf5ff;
+    --scrollbar-handle: #00000044;
+    --scrollbar-handle-active: #00000099;
     /* --color-primary: 37, 99, 235;
     
     --text-primary: #f4e0f1;
@@ -62,13 +65,22 @@
     --primary: #f44f61ff;
     --primary-hover: #f66d7cff;
     --primary-active: #f23146ff;
-    --text: #e5e7ebff;
+
+    --secondary: #615dfa;
+    /* #615dfa
+    #41efff */
+    --text-primary: #e5e7ebee;
+    --text-secondary: #616a82ff;
+
     --icon: #616a82ff;
 
     --nav-button: #e5e7eb88;
     --nav-button-light: #e5e7ebee;
 
     --border: #3f485fff;
+    --divider: #2f3749ff;
+    --scrollbar-handle: #00000044;
+    --scrollbar-handle-active: #00000099;
   }
 
   * {
@@ -77,5 +89,10 @@
 
   header {
     backdrop-filter: saturate(150%) contrast(80%) blur(10px);
+  }
+
+  #app.os-host > .os-padding > .os-viewport > .os-content,
+  #app.os-host > .os-padding > .os-viewport > .os-content-arrange {
+    @apply min-h-screen min-w-full;
   }
 }

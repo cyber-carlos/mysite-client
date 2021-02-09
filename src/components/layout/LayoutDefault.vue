@@ -1,33 +1,23 @@
 <template>
-  <section
-    class="relative flex flex-col w-full h-screen overflow-hidden text-carlos-text bg-carlos-bg1"
-  >
+  <section class="relative flex flex-col w-full h-screen text-carlos-text-primary">
     <AppHeader
       class="fixed z-50 flex flex-row items-center w-full bg-opacity-80 shadow-header h-14 bg-carlos-bg4"
     />
-    <!-- <section class="flex flex-row justify-item-center">
-      <aside class="flex-0048">234</aside>
-    </section> -->
-    <section class="flex flex-col flex-1 h-full overflow-y-auto mt-14" :class="navIsExpanded ? 'ml-48' : 'ml-20'">
-      <section
-        class="flex-1 w-full max-w-full mx-auto justify-items-center lg:max-w-main-lg xl:max-w-main-max"
-      >
+    <section class="flex flex-col flex-1 mt-14" :class="navIsExpanded ? 'ml-48' : 'ml-20'">
+      <section class="flex-1">
         <!-- <Breadcrumb /> -->
         <router-view></router-view>
       </section>
-      <AppFooter class="py-6 text-sm text-center bg-carlos-bg3 text-carlos-text" />
+      <AppFooter />
     </section>
-    <AppNav class="fixed h-full" :class="navIsExpanded ? 'w-48' : 'w-20'" />
+    <AppNav class="fixed bottom-0 left-0 top-14" :class="navIsExpanded ? 'w-48' : 'w-20'" />
   </section>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
 import { useStore } from 'vuex'
-// import CustomRouterView from '@/components/CustomRouterView.vue'
 
-// import Breadcrumb from '@/components/Breadcrumb.vue'
-// import { AppHeader, AppFooter, AppNav } from './index'
 import AppHeader from './AppHeader'
 import AppFooter from './AppFooter.vue'
 import AppNav from './AppNav.vue'

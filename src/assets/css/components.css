@@ -1,5 +1,6 @@
 @import '@/components/common/CButton/CButton.css';
 @import '@/components/common/CLink/CLink.css';
+@import '@/components/common/CImage/CImage.css';
 
 @layer components {
   .header-logo {

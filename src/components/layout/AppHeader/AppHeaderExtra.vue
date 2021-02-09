@@ -25,11 +25,10 @@
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from 'vue'
 import { useStore } from 'vuex'
-import { CButton } from '@/components/common'
 
 export default defineComponent({
   name: 'AppHeaderExtra',
-  components: { CButton },
+  components: { },
   props: {},
   setup(props) {
     const { state, commit } = useStore()

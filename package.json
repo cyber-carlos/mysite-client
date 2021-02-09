@@ -14,12 +14,13 @@
     "clean": "rm -rf node_modules/.vite"
   },
   "dependencies": {
-    "@icon-park/vue-next": "^1.2.6",
+    "@icon-park/vue-next": "^1.2.7",
     "@vueuse/core": "^4.1.0",
     "axios": "^0.21.1",
     "color": "^3.1.3",
     "dayjs": "^1.10.4",
     "nprogress": "^0.2.0",
+    "overlayscrollbars": "^1.13.1",
     "vue": "^3.0.5",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0"
@@ -29,8 +30,9 @@
     "@types/color": "^3.0.1",
     "@types/node": "^14.14.25",
     "@types/nprogress": "^0.2.0",
+    "@types/overlayscrollbars": "^1.12.0",
     "@vitejs/plugin-vue": "^1.1.4",
-    "@vitejs/plugin-vue-jsx": "^1.0.2",
+    "@vitejs/plugin-vue-jsx": "^1.0.3",
     "@vue/compiler-sfc": "^3.0.5",
     "@vuedx/typecheck": "^0.6.3",
     "@vuedx/typescript-plugin-vue": "^0.6.3",
@@ -44,8 +46,8 @@
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.2.1",
     "stylelint-config-recommended": "^3.0.0",
-    "tailwindcss": "^2.0.2",
+    "tailwindcss": "^2.0.3",
     "typescript": "^4.1.3",
-    "vite": "^2.0.0-beta.65"
+    "vite": "^2.0.0-beta.66"
   }
 }

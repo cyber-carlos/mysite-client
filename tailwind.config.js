@@ -33,10 +33,16 @@ module.exports = {
         primary: 'var(--primary)',
         'primary-hover': 'var(--primary-hover)',
         'primary-active': 'var(--primary-active)',
-        text: 'var(--text)',
+
+        secondary: 'var(--secondary)',
+
+        'text-primary': 'var(--text-primary)',
+        'text-secondary': 'var(--text-secondary)',
+
         icon: 'var(--icon)',
 
         border: 'var(--border)',
+        divider: 'var(--divider)',
       },
       // carlos: {
       //   'gray-normal': 'var(--gray-normal)',
@@ -63,6 +69,9 @@ module.exports = {
       fontFamily: {
         welcome: ['Luckiest Guy', 'sans-serif'],
       },
+      spacing: {
+        22: '5.5rem',
+      },
       maxWidth: {
         img: '80%',
         20: '5rem',
@@ -82,12 +91,18 @@ module.exports = {
         400: '400ms',
         600: '600ms',
         800: '800ms',
+        2000: '2000ms',
       },
       transitionDelay: {
         400: '400ms',
       },
       gridTemplateColumns: {},
       gridTemplateRows: {},
+      backgroundImage: (theme) => ({
+        'texture-xv': "url('/images/texture-xv.png')",
+        'texture-skulls': "url('/images/texture-skulls.png')",
+        'texture-food': "url('/images/texture-food.png')",
+      }),
       typography: (theme) => ({
         DEFAULT: {
           css: {

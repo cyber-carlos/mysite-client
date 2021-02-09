@@ -1,11 +1,14 @@
 <template>
-  <CScrollBar class="h-screen max-h-screen min-h-screen os-host-flexbox">
+  <CScrollBar
+    class="h-screen max-h-screen min-h-screen os-host-flexbox bg-carlos-bg1"
+    ref="refScrollBar"
+  >
     <router-view></router-view>
   </CScrollBar>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted, reactive, watchEffect } from 'vue'
+import { computed, defineComponent, onMounted, ref, watchEffect } from 'vue'
 import { useStore } from 'vuex'
 
 export default defineComponent({
@@ -18,8 +21,8 @@ export default defineComponent({
     onMounted(() => {
       const appLoader = document.getElementById('app-loader')
       if (appLoader) {
-        appLoader.className = 'transition-opacity opacity-0 duration-1000'
-        setTimeout(() => document.body.removeChild(appLoader), 1000)
+        appLoader.className = 'transition-opacity opacity-0 duration-2000'
+        setTimeout(() => document.body.removeChild(appLoader), 2000)
       }
 
       watchEffect(() => {

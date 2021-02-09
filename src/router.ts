@@ -32,12 +32,12 @@ const router = createRouter({
           component: Components,
           meta: { label: '组件', icon: 'figma-component' },
         },
-        {
-          path: '/about',
-          name: 'About',
-          component: About,
-          meta: { label: '关于', icon: 'tips-one' },
-        },
+        // {
+        //   path: '/about',
+        //   name: 'About',
+        //   component: About,
+        //   meta: { label: '关于', icon: 'tips-one' },
+        // },
       ],
     },
   ],

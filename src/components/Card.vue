@@ -30,7 +30,6 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import ImageThumbnail from '@/assets/img/logo.png'
 
 export default defineComponent({
   name: 'Card',
@@ -51,7 +50,7 @@ export default defineComponent({
         result.thumbnail = result.thumbnail
         result.hasThumbnail = true
       } else {
-        result.thumbnail = ImageThumbnail
+        result.thumbnail = '/logo.png'
         result.hasThumbnail = false
       }
       return result

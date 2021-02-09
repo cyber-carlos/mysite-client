@@ -3,7 +3,6 @@
     class="space-y-2"
     :class="[
       'c-button',
-      'text-sm',
       type ? 'c-button--' + type : '',
       {
         'is-disabled': btnDisabled,

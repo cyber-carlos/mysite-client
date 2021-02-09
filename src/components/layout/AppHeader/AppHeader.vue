@@ -19,14 +19,12 @@ import { defineComponent, reactive, ref, toRefs } from 'vue'
 import AppHeaderNavTrigger from './AppHeaderNavTrigger.vue'
 import AppHeaderExtra from './AppHeaderExtra.vue'
 
-import ImageLogo from '@/assets/img/logo.png'
-
 export default defineComponent({
   name: 'AppHeader',
   components: { AppHeaderNavTrigger, AppHeaderExtra },
   props: {},
   setup() {
-    const imageLogo = ref(ImageLogo)
+    const imageLogo = ref('/logo.png')
     return {
       imageLogo,
     }

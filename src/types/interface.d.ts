@@ -7,6 +7,7 @@ export interface IFeed {
   description: string
   sourceId: string
   thumbnail: string
+  hasThumbnail?: boolean
   author: string
   source: any
 }

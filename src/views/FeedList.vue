@@ -1,24 +1,47 @@
 <template>
-  <LayoutContent class="container flex flex-row flex-wrap">
-    <div class="relative flex-1" v-loading="isLoading">
-      <!-- <transition-group
-        appear
-        name="card"
-        tag="div"
-        class="grid grid-cols-1 gap-5 auto-rows-auto sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
-      > -->
-      <!-- <transition-group appear name="card" tag="div" class="auto-rows-auto"> -->
-      <!-- <img v-for="(item, index) in feedItems" :key="'card' + index" :src="item.thumbnail" /> -->
-      <!-- :style="{ '--i': index }" -->
-      <Card
-        class="inline-block"
-        v-for="(item, index) in feedItems"
-        :key="item.id"
-        :item="item"
-      ></Card>
-      <!-- </transition-group> -->
+  <LayoutContent>
+    <template #header>
+      <SectionBanner section-title="Feed" section-detail="订阅你喜欢的Feed" />
+    </template>
+    <div class="flex flex-col space-y-6" v-loading="isLoading">
+      <CCard v-for="item in feedItems" :key="`feed-${item.id}`" class="flex-1 rounded-lg">
+        <div>
+          <CImage
+            class="w-full rounded-t-lg h-36 max-h-36"
+            :fit="item.hasThumbnail ? 'cover' : 'contain'"
+            :src="item.thumbnail"
+            :alt="item.title"
+          />
+        </div>
+        <div class="mx-4 mt-4">
+          {{ item.title }}
+        </div>
+        <div
+          class="flex flex-row p-2 mx-4 mt-4 text-xs border-t border-carlos-divider text-carlos-text-secondary"
+        >
+          <div v-if="item.source || item.author">
+            <IconPark name="world" size="12" />
+            {{ `${item.source?.name || ''} ${item.author || ''}` }}
+          </div>
+          <div class="ml-auto">
+            <span>
+              <IconPark name="time" size="12" />
+              {{ $dayjs(item.pubDate).fromNow() }}
+            </span>
+          </div>
+        </div>
+      </CCard>
     </div>
-    <!-- <div class="hidden p-4 lg:flex lg:w-64">123</div> -->
+    <template #leftSider>
+      <CCard class="rounded-lg">
+        <template #header><div class="p-4">分类</div></template>
+      </CCard>
+    </template>
+    <template #rightSider>
+      <CCard class="rounded-lg">
+        <template #header><div class="p-4">推荐</div></template>
+      </CCard>
+    </template>
   </LayoutContent>
 </template>
 
@@ -27,13 +50,14 @@ import { defineComponent, onMounted, reactive, ref } from 'vue'
 
 import { LayoutContent } from '@/components/layout'
 
+import SectionBanner from '@/components/SectionBanner.vue'
+
 import { IFeed } from '@/types/interface'
 import { useAxios } from '@/hooks/useAxios'
-import Card from '@/components/Card.vue'
 
 export default defineComponent({
   name: 'FeedList',
-  components: { LayoutContent, Card },
+  components: { LayoutContent, SectionBanner },
   props: {},
   setup() {
     const feedItems = reactive<IFeed[]>([])
@@ -41,11 +65,18 @@ export default defineComponent({
     const fetchFeeds = async () => {
       isLoading.value = true
       const { error, data, finished } = await useAxios('feeders')
-      // const dataItems = data.value.data
-      // const dataMeta = data.value.meta
       if (!error.value) {
         isLoading.value = !finished.value
         feedItems.splice(0, feedItems.length, ...data.value.data)
+        feedItems.forEach((e) => {
+          if (e.thumbnail) {
+            e.thumbnail = e.thumbnail
+            e.hasThumbnail = true
+          } else {
+            e.thumbnail = '/logo.png'
+            e.hasThumbnail = false
+          }
+        })
       }
     }
     onMounted(() => {

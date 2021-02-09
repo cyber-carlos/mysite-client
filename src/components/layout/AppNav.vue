@@ -1,35 +1,37 @@
 <template>
   <div>
-    <nav
-      class="absolute w-48 h-full pt-4 ease-linear transform transition-carlos mt-14 bg-carlos-bg2"
-      :class="expandedClass"
-    >
-      <router-link
-        v-for="(item, index) in menuItems"
-        :key="index"
-        class="flex items-center px-6 py-2"
-        :class="[$route.matched[1]?.name === item.name ? activeClass : inactiveClass]"
-        :to="item.path"
+    <CScrollBar class="relative h-full">
+      <!-- FIXME 当高度不同时滚动条显示错误 -->
+      <nav
+        class="absolute top-0 w-48 min-h-full pt-4 ease-linear transform transition-carlos bg-carlos-bg2"
+        :class="expandedClass"
       >
-        <IconPark :name="item.meta?.icon || 'square-small'" size="1.5rem" />
-        <span class="mx-4">{{ item.meta?.label || '' }}</span>
-      </router-link>
-    </nav>
-    <nav
-      class="absolute w-20 h-full pt-4 ease-linear transform transition-carlos mt-14 bg-carlos-bg2"
-      :class="collapsedClass"
-    >
-      <router-link
-        v-for="(item, index) in menuItems"
-        :key="index"
-        class="block w-full px-6 py-2 text-center"
-        :class="[$route.matched[1]?.name === item.name ? activeClass : inactiveClass]"
-        :to="item.path"
+        <router-link
+          v-for="(item, index) in menuItems"
+          :key="index"
+          class="flex items-center px-6 py-2"
+          :class="[$route.matched[1]?.name === item.name ? activeClass : inactiveClass]"
+          :to="item.path"
+        >
+          <IconPark :name="item.meta?.icon || 'square-small'" size="1.5rem" />
+          <span class="mx-4">{{ item.meta?.label || '' }}</span>
+        </router-link>
+      </nav>
+      <nav
+        class="absolute top-0 w-20 min-h-full pt-4 ease-linear transform transition-carlos bg-carlos-bg2"
+        :class="collapsedClass"
       >
-        <IconPark :name="item.meta?.icon || 'square-small'" size="1.5rem" />
-        <!-- <span class="mx-4">{{ item.meta?.label || '' }}</span> -->
-      </router-link>
-    </nav>
+        <router-link
+          v-for="(item, index) in menuItems"
+          :key="index"
+          class="block w-full px-6 py-2 text-center"
+          :class="[$route.matched[1]?.name === item.name ? activeClass : inactiveClass]"
+          :to="item.path"
+        >
+          <IconPark :name="item.meta?.icon || 'square-small'" size="1.5rem" />
+        </router-link>
+      </nav>
+    </CScrollBar>
   </div>
 </template>
 
@@ -58,6 +60,7 @@ export default defineComponent({
     const navIsExpanded = computed(() => state.navIsExpanded)
     const expandedClass = ref(navIsExpanded ? 'translate-x-0' : '-translate-x-full')
     const collapsedClass = ref(navIsExpanded ? '-translate-x-full' : 'translate-x-0')
+
     watchEffect(() => {
       if (navIsExpanded.value) {
         collapsedClass.value = '-translate-x-full duration-400'
